@@ -95,3 +95,17 @@ function TimeSheet() {
 
 export default TimeSheet;
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu ", "Fri", "Sat"];
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
