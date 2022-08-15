@@ -1,0 +1,174 @@
+
+ *{
+    box-sizing: border-box;
+    margin: o;
+    padding:0;
+}
+.date-field{
+    margin:10px 2px;
+    display: flex;
+
+}
+.date {
+    font-size: 1px;
+   padding-right: 10px;
+}
+.date-field-input{
+    padding: 2px;
+    outline: none;
+    width: 105px;
+    color: rgb(0, 0, 0);
+    background-color:rgb(178, 193, 198);
+ border: none;
+}
+.totle-time  {
+ width: 100%;
+ display: flex;
+  justify-content: flex-end;
+}
+.totle-time h2  {
+    display: inline;
+margin: 10px;
+color: white;
+   }
+.container{
+    background-color: rgb(248, 248, 248);
+    width: 80vw;
+    min-height: 30vh;
+    min-width:700px;
+    position: absolute;
+    top: 50px;
+   box-shadow: 0 0 10px 0 rgba(0 ,0,0,0.5);
+   border-radius: 2px;
+}
+.nav-slots{
+    width: 100%;
+    min-height: 8vh; 
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    grid-gap: 1px;
+}
+.nav-slot{
+    background-color: rgba(75, 75, 75, 0.801);
+
+}
+.days-slot{
+display: grid;
+grid-template-columns: repeat(7,1fr);
+color: white;
+}
+.dates-slot{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    color: white;
+    }
+.date{
+font-size: .7em;
+}
+.day{
+font-size:.7em;
+
+}
+.main-slots{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+ 
+.sub-slot{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: 1fr 1fr;
+}
+ 
+.time-slot{
+    height: 40px;
+    width: 100%;
+ 
+}
+ .input-slot{
+    background-color: rgb(186, 186, 186);
+    border: none;
+    min-width: 3rem;
+ 
+ }
+ .input-slot:hover{
+    background-color: rgb(255, 255, 255);
+ 
+ }
+ 
+input[type="text"]{
+    width: 2.8em;
+    height: 2em;
+    outline: none;
+    margin-bottom: 15px;
+ text-align: center;
+}
+input[type="checkbox"]{
+    width: .7em;
+ margin: 3px;
+ 
+}
+
+ 
+/***************** table styling ***************/
+.table-box{
+margin-top: 15px;
+margin-left: 4px;
+margin-right: 4px;
+}
+.table-content{
+    border-collapse: collapse;
+    margin-top: 2px;
+    font-size: .5em;
+    overflow: hidden;
+
+}
+.table-content thead tr{
+    text-align: left;
+    font-weight: bold;
+    background-color: rgb(79, 196, 239);
+}
+.table-content th ,
+.table-content td{
+    padding: 5px;
+}
+.table-content tr {
+    border: 1px solid gray;
+}
+
+ 
+
+
+
+
+
+ .button-group{
+    display: flex;
+    justify-content: flex-end;
+ }
+ .button-group button{
+    width: 6em;
+    font-size:10px;;
+    margin: .7em .2em;
+    height: 20px;
+    border-radius: 10px;
+ }
+ .button-group button:hover{
+    height: 19px;
+    background-color: rgb(235, 235, 235);
+    
+ }
+
+ .time-slot-container{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    margin-top: 30px;
+ }
+ .time-slot-container div{
+    background-color: rgb(195, 195, 236);
+   margin: 2px;
+   text-align: center;
+ }
+ .day{
+    font-size: .8em;
+ }
