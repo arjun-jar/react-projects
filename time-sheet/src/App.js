@@ -4,7 +4,7 @@ import TimeSheet from "./component/TimeSheet";
 
 function App() {
   return (
-    <div className="time-sheet">
+    <div>
       <TimeSheet />
     </div>
   );

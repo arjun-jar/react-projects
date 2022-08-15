@@ -11,7 +11,7 @@ function TimeSheet() {
   useEffect(() => {}, [date]);
 
   return (
-    <div>
+    <div className="time-sheet">
       <div className="container">
         <div className="timesheet-container">
           <div className="nav-slots">
