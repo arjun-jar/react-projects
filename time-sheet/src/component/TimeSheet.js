@@ -1,8 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import TimeSheettable from "./TimeSheettable";
-
 function TimeSheet() {
-  const [date, setdate] = useState(new Date().toISOString().slice(0, 10));
+  const [date, setdate] = useState(new Date());
   const [dateAndMonth, setDateAndMonth] = useState([]);
   const [value, setValue] = useState("9:00");
   const dateMonth = new Array(7).fill(null);
@@ -12,6 +12,8 @@ function TimeSheet() {
 
   return (
     <div className="time-sheet">
+    <FontAwesomeIcon icon="fa-solid fa-angle-left" />
+
       <div className="container">
         <div className="timesheet-container">
           <div className="nav-slots">
@@ -109,3 +111,13 @@ const monthNames = [
   "Nov",
   "Dec",
 ];
+const getDaysInMonth=(month, year)=>{
+  var date = new Date(year, month, 10);
+  var days = [];
+  while (date.getMonth() === month) {
+    days.push(new Date(date));
+    date.setDate(date.getDate() + 1);
+  }
+  return days;
+}
+getDaysInMonth(0,2022).map(date=>console.log(date))
