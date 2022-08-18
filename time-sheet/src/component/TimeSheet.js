@@ -1,60 +1,75 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import TimeSheettable from "./TimeSheettable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import DatesComponet from "./DatesComponet";
+
 function TimeSheet() {
-  const [date, setdate] = useState(new Date());
-  const [dateAndMonth, setDateAndMonth] = useState([]);
+  const [date, setdate] = useState(new Date().toISOString().slice(0, 7));
+  const [saven, setSaven] = useState();
+  const [yearAndMonth, setYearAndMonth] = useState([]);
   const [value, setValue] = useState("9:00");
   const dateMonth = new Array(7).fill(null);
-  const slots = new Array(14).fill(null);
+  const [lastDate, setLastDate] = useState(0);
 
-  useEffect(() => {}, [date]);
+  let slots = new Array(lastDate).fill(null);
 
+  useEffect(() => {
+    const year = date.slice(0, 4);
+    const month = date.slice(5, 7);
+    console.log(year, month);
+    let array = getDaysInMonth(month - 1, +year);
+    setLastDate(() => array.length);
+    setYearAndMonth(() => array);
+  }, [date]);
+
+  function getDaysInMonth(month, year) {
+    var date = new Date(year, month, 1);
+    var days = [];
+    while (date.getMonth() === month) {
+      days.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+    console.log(days);
+    return days;
+  }
   return (
     <div className="time-sheet">
-    <FontAwesomeIcon icon="fa-solid fa-angle-left" />
-
       <div className="container">
-        <div className="timesheet-container">
-          <div className="nav-slots">
-            <div className="nav-slot slot-left">
-              <div className="date-field">
-                <div>
-                  <input
-                    className="date-field-input"
-                    type="date"
-                    value={date}
-                    onChange={(e) => setdate(e.target.value)}
-                  ></input>
-                </div>
+        <div className="nav-slots">
+          <div className="nav-slot slot-left">
+            <div className="date-field">
+              <div>
+                <input
+                  className="date-field-input"
+                  type="month"
+                  value={date}
+                  onChange={(e) => setdate(e.target.value)}
+                ></input>
+              </div>
 
-                <div className="totle-time">
-                  <div>
-                    <h2>{value}</h2>
-                  </div>
+              <div className="totle-time">
+                <div>
+                  <h2>{value}</h2>
                 </div>
               </div>
             </div>
-            <div className="nav-slot slot-right">
-              <div className="days-slot">
-                {days.map((day, i) => (
-                  <div className={`day-${i + 1}`}>
-                    <span className="day">{day.toUpperCase()}</span>
-                    <input type="Checkbox"></input>
+          </div>
+          <div className="nav-slot slot-right">
+            <div className="week-field" id="style-9">
+              {yearAndMonth.map((date, i) => (
+                <div className={`week day-${i + 1}`}>
+                  <span className="day">
+                    {date.toLocaleDateString("locale", {
+                      weekday: "short",
+                    })}
+                  </span>
+                  <div className="week">
+                    {date.toLocaleString("default", { month: "short" })}{" "}
+                    {date.getDate()}
                   </div>
-                ))}
-              </div>
-              <div className="dates-slot">
-                {dateMonth.map((d, i) => (
-                  <div className={`date-${i + 1}`}>
-                    <span className="date">
-                      {monthNames[new Date(date).getMonth()] +
-                        " " +
-                        JSON.stringify(new Date(date).getDate() + i)}
-                    </span>
-                  </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -77,15 +92,22 @@ function TimeSheet() {
                 ))}
               </div>
             </div>
-            <div className="sub-slot">
+            <div className="sub-slot" id="style-9">
               {slots.map((n, i) => (
-                <input
-                  maxLength="4"
-                  type="text"
-                  className={`input-slot input-slot-${i + 1}`}
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                ></input>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div style={{ textAlign: "center" }}>
+                    <h6 className="number">{i + 1}</h6>
+                  </div>
+                  <div>
+                    <input
+                      maxLength="4"
+                      type="text"
+                      className={`input-slot input-slot-${i + 1}`}
+                      value={value}
+                      onChange={(e) => setValue(e.target.value)}
+                    ></input>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -96,28 +118,3 @@ function TimeSheet() {
 }
 
 export default TimeSheet;
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu ", "Fri", "Sat"];
-const monthNames = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-const getDaysInMonth=(month, year)=>{
-  var date = new Date(year, month, 10);
-  var days = [];
-  while (date.getMonth() === month) {
-    days.push(new Date(date));
-    date.setDate(date.getDate() + 1);
-  }
-  return days;
-}
-getDaysInMonth(0,2022).map(date=>console.log(date))
