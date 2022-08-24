@@ -80,6 +80,7 @@ function TimeSheet() {
               <button onClick={() => alert("SAVING...")}>save</button>
               <button onClick={() => alert("SUBMITTING...")}>submit</button>
             </div>
+            <div><button style={{marginLeft:"5px"}}>Add</button></div>
             <TimeSheettable />
           </div>
           <div className="slot-right">
